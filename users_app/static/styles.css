@@ -1,0 +1,13 @@
+*{
+    margin: auto 0px;
+    padding: 0px;
+}
+.container{
+    padding: 10px;
+    text-align: center;
+    font-family: sans-serif;
+}
+header{
+    margin-left: 50px;
+    text-align: center;
+}

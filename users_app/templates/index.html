@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>User Database</title>
+</head>
+<body>
+    <div class="container">
+        <h1 class=" header text-info">All the Users</h1>
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.full_name}}</td>
+                    <td>{{user.email_address}}</td>
+                    <td>{{user.age}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div id="home">
+            <h1 class="header text-info">Add a User</h1>
+            <form action="/create" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="first_name">First Name</label>
+                    <input type="text" id="first_name" name="first_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="last_name">Last Name</label>
+                    <input type="text" id="last_name" name="last_name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="email_address">Email</label>
+                    <input type="email" id="email_address" name="email_address" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" class="form-control">
+                </div>
+                <button class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
